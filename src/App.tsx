@@ -1,68 +1,70 @@
-import React, { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import { Loading } from "./components/ui/loading";
-import { useRoutes, Routes, Route } from "react-router-dom";
-import routes from "tempo-routes";
+import { Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import Home from "./components/home";
+import routes from "tempo-routes";
+import { useRoutes } from "react-router-dom";
 
-// Lazy load secondary routes
-const ServicesPage = React.lazy(
-  () => import("./components/sections/ServicesPage"),
-);
-const AboutPage = React.lazy(() => import("./components/sections/AboutPage"));
-const ServiceDetail = React.lazy(
-  () => import("./components/sections/ServiceDetail"),
-);
+// Lazy load all routes
+const Home = lazy(() => import("./components/home"));
+const ServicesPage = lazy(() => import("./components/sections/ServicesPage"));
+const AboutPage = lazy(() => import("./components/sections/AboutPage"));
+const ServiceDetail = lazy(() => import("./components/sections/ServiceDetail"));
 
 function App() {
-  return (
-    <>
-      {/* For the tempo routes */}
-      {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
+  // Handle Tempo routes first
+  if (import.meta.env.VITE_TEMPO) {
+    const tempoRoutes = useRoutes(routes);
+    if (tempoRoutes) return tempoRoutes;
+  }
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
+  // Then handle application routes
+  return (
+    <Routes>
+      {/* Add this before other routes to allow Tempo to capture its routes */}
+      {import.meta.env.VITE_TEMPO && <Route path="/tempobook/*" />}
+
+      <Route
+        path="/"
+        element={
+          <Layout>
+            <Suspense fallback={<Loading />}>
               <Home />
-            </Layout>
-          }
-        />
-        <Route
-          path="/services"
-          element={
-            <Layout>
-              <Suspense fallback={<Loading />}>
-                <ServicesPage />
-              </Suspense>
-            </Layout>
-          }
-        />
-        <Route
-          path="/services/:slug"
-          element={
-            <Layout>
-              <Suspense fallback={<Loading />}>
-                <ServiceDetail />
-              </Suspense>
-            </Layout>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <Layout>
-              <Suspense fallback={<Loading />}>
-                <AboutPage />
-              </Suspense>
-            </Layout>
-          }
-        />
-        {/* Add this before the catchall route */}
-        {import.meta.env.VITE_TEMPO === "true" && <Route path="/tempobook/*" />}
-      </Routes>
-    </>
+            </Suspense>
+          </Layout>
+        }
+      />
+      <Route
+        path="/services"
+        element={
+          <Layout>
+            <Suspense fallback={<Loading />}>
+              <ServicesPage />
+            </Suspense>
+          </Layout>
+        }
+      />
+      <Route
+        path="/services/:slug"
+        element={
+          <Layout>
+            <Suspense fallback={<Loading />}>
+              <ServiceDetail />
+            </Suspense>
+          </Layout>
+        }
+      />
+      <Route
+        path="/about"
+        element={
+          <Layout>
+            <Suspense fallback={<Loading />}>
+              <AboutPage />
+            </Suspense>
+          </Layout>
+        }
+      />
+    </Routes>
   );
 }
 

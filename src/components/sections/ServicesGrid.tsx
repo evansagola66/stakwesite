@@ -22,18 +22,16 @@ const ServicesGrid = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
+            <div key={service.title}>
               <Card className="h-full bg-white hover:shadow-lg transition-all duration-300 overflow-hidden group">
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                    width={500}
+                    height={300}
                   />
                   <div className="absolute inset-0 bg-black/40" />
                   <service.icon className="absolute top-4 right-4 w-8 h-8 text-[#FF6B35]" />
@@ -65,7 +63,7 @@ const ServicesGrid = () => {
                   </Link>
                 </div>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

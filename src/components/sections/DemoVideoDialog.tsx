@@ -76,6 +76,9 @@ export function DemoVideoDialog() {
                 src={slides[currentSlide].image}
                 alt={slides[currentSlide].title}
                 className="w-full h-full object-cover"
+                loading="lazy"
+                width={800}
+                height={450}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">

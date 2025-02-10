@@ -25,17 +25,14 @@ const HeroSection = () => {
                 { icon: Code2, text: "Web Development" },
                 { icon: Globe2, text: "Digital Solutions" },
                 { icon: Cpu, text: "AI Integration" },
-              ].map((tag, index) => (
-                <motion.div
+              ].map((tag) => (
+                <div
                   key={tag.text}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
                   className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
                 >
                   <tag.icon className="w-4 h-4 text-[#FF6B35]" />
                   <span className="text-sm text-white/90">{tag.text}</span>
-                </motion.div>
+                </div>
               ))}
             </div>
 
@@ -117,11 +114,13 @@ const HeroSection = () => {
                 className="w-full h-full rounded-3xl overflow-hidden"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&w=500&q=80&auto=format"
+                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&w=500&q=75&auto=format"
                   alt="Tech Visual"
                   className="w-full h-full object-cover"
                   loading="eager"
                   fetchPriority="high"
+                  width={500}
+                  height={500}
                 />
               </motion.div>
 

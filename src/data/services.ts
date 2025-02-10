@@ -30,7 +30,7 @@ export const services: Service[] = [
     description:
       "Professional network infrastructure and structured cabling solutions",
     image:
-      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&w=500&q=80",
+      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&w=500&q=75&auto=format",
     features: [
       "Network Design & Implementation",
       "Structured Cabling Installation",
@@ -45,7 +45,7 @@ export const services: Service[] = [
     description:
       "Quality computer hardware, peripherals and accessories for your needs",
     image:
-      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?ixlib=rb-4.0.3&w=500&q=80",
+      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?ixlib=rb-4.0.3&w=500&q=75&auto=format",
     features: [
       "Computer Hardware",
       "Peripherals & Accessories",

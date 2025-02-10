@@ -1,6 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Users, Target, Award, Rocket, CheckCircle } from "lucide-react";
+import {
+  Users,
+  Target,
+  Award,
+  Rocket,
+  CheckCircle,
+  ArrowRight,
+} from "lucide-react";
 import { ContactDialog } from "./ContactDialog";
 
 const values = [
@@ -37,7 +44,7 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-[#0A2647]">
       {/* Hero Section */}
-      <div className="relative py-20 overflow-hidden">
+      <div className="relative py-32 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-30" />
 
         <div className="container mx-auto px-4">
@@ -95,7 +102,7 @@ const AboutPage = () => {
             <div className="relative rounded-2xl overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&w=800&q=80"
-                alt="Diverse Team Meeting"
+                alt="Team Meeting"
                 className="w-full h-[400px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A2647] via-transparent to-transparent" />

@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { ContactDialog } from "./ContactDialog";
+
 import { services } from "@/data/services";
 import { Button } from "@/components/ui/button";
 
@@ -64,10 +64,6 @@ const ServiceDetail = () => {
                   ))}
                 </div>
               </div>
-
-              <div className="mt-8">
-                <ContactDialog />
-              </div>
             </motion.div>
 
             <motion.div
@@ -84,6 +80,51 @@ const ServiceDetail = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A2647] via-transparent to-transparent" />
               </div>
             </motion.div>
+          </div>
+
+          {/* Contact Form Section */}
+          <div className="mt-16 max-w-xl mx-auto bg-white/5 backdrop-blur-sm rounded-xl p-8">
+            <h2 className="text-2xl font-semibold text-white mb-6">
+              Get Started with {service.title}
+            </h2>
+            <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+              <div className="space-y-2">
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:border-transparent"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:border-transparent"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <input
+                  type="text"
+                  placeholder="Company (optional)"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:border-transparent"
+                />
+              </div>
+              <div className="space-y-2">
+                <textarea
+                  placeholder="Tell us about your project"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:border-transparent min-h-[120px]"
+                  required
+                />
+              </div>
+              <Button
+                type="submit"
+                className="w-full bg-[#FF6B35] text-white hover:bg-[#FF8B5E] text-lg py-6 transition-all duration-300"
+              >
+                Submit Request
+              </Button>
+            </form>
           </div>
         </div>
       </div>

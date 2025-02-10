@@ -26,6 +26,7 @@ export function ContactDialog() {
         <Button
           size="lg"
           className="bg-[#FF6B35] text-white hover:bg-[#FF8B5E] text-lg px-8 py-6 transition-all duration-300"
+          type="button"
         >
           Get Started
         </Button>
