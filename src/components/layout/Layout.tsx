@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../navigation/Navbar";
 import Footer from "../sections/Footer";
+import { ScrollToTop } from "../ui/scroll-to-top";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
       />
       <main className="flex-grow">{children}</main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

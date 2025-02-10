@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Counter } from "@/components/ui/counter";
 import {
   Users,
   Target,
@@ -57,8 +58,8 @@ const AboutPage = () => {
               About <span className="text-[#FF6B35]">Stakweb</span>
             </h1>
             <p className="text-xl text-gray-300">
-              Transforming businesses through innovative technology solutions
-              since 2013
+              Stay Business Ready - Transforming businesses through innovative
+              technology solutions since 2013
             </p>
           </motion.div>
         </div>
@@ -151,7 +152,10 @@ const AboutPage = () => {
               className="text-center"
             >
               <div className="text-4xl font-bold text-[#FF6B35] mb-2">
-                {achievement.number}
+                <Counter
+                  end={parseInt(achievement.number)}
+                  suffix={achievement.number.includes("+") ? "+" : "%"}
+                />
               </div>
               <div className="text-gray-300">{achievement.label}</div>
             </motion.div>

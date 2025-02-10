@@ -1,12 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Code2, Cpu, Globe2 } from "lucide-react";
-import { ContactDialog } from "./ContactDialog";
+import { Counter } from "@/components/ui/counter";
 import { DemoVideoDialog } from "./DemoVideoDialog";
+import { ContactDialog } from "./ContactDialog";
+import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[800px] bg-[#0A2647] overflow-hidden">
+    <section className="relative min-h-[800px] bg-[#0A2647] overflow-hidden pt-20 lg:pt-0">
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-30" />
 
@@ -44,8 +46,8 @@ const HeroSection = () => {
                 transition={{ delay: 0.2 }}
                 className="text-4xl lg:text-6xl font-bold text-white leading-[1.1]"
               >
-                Transform Your <span className="text-[#FF6B35]">Digital</span>{" "}
-                Vision into Reality
+                Stay Business Ready with{" "}
+                <span className="text-[#FF6B35]">Digital</span> Innovation
               </motion.h1>
 
               <motion.p
@@ -65,7 +67,14 @@ const HeroSection = () => {
                 transition={{ delay: 0.4 }}
                 className="flex flex-col sm:flex-row gap-4"
               >
-                <ContactDialog />
+                <ContactDialog>
+                  <Button
+                    size="lg"
+                    className="bg-[#FF6B35] text-white hover:bg-[#FF8B5E] transition-all duration-200 text-lg px-8 py-6"
+                  >
+                    Get Started
+                  </Button>
+                </ContactDialog>
                 <DemoVideoDialog />
               </motion.div>
 
@@ -83,7 +92,10 @@ const HeroSection = () => {
                 ].map((stat) => (
                   <div key={stat.label} className="space-y-2">
                     <div className="text-2xl font-bold text-white">
-                      {stat.number}
+                      <Counter
+                        end={parseInt(stat.number)}
+                        suffix={stat.number.includes("+") ? "+" : "%"}
+                      />
                     </div>
                     <div className="text-sm text-gray-400">{stat.label}</div>
                   </div>

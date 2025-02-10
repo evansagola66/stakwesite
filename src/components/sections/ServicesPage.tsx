@@ -16,7 +16,7 @@ const ServicesPage = () => {
           <Button
             asChild
             variant="ghost"
-            className="group mb-8 text-white hover:text-white hover:bg-white/10 backdrop-blur-sm"
+            className="group mb-8 mt-8 backdrop-blur-sm"
           >
             <Link to="/" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
@@ -37,7 +37,8 @@ const ServicesPage = () => {
             transition={{ delay: 0.2 }}
             className="text-gray-300 text-center max-w-2xl mx-auto text-lg"
           >
-            Comprehensive technology solutions tailored to your business needs
+            Stay Business Ready with comprehensive technology solutions tailored
+            to your needs
           </motion.p>
         </div>
       </div>
@@ -84,7 +85,7 @@ const ServicesPage = () => {
                 <div className="flex justify-between items-center">
                   <Button
                     size="lg"
-                    className="bg-[#FF6B35] text-white hover:bg-[#FF8B5E] text-lg px-8 py-6 transition-all duration-300"
+                    className="text-lg px-8 py-6 transition-all duration-300"
                     asChild
                   >
                     <ContactDialog />

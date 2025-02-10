@@ -1,27 +1,61 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 import {
   Facebook,
-  Twitter,
-  Instagram,
   Linkedin,
   Mail,
   Phone,
   MapPin,
   Send,
+  MessageCircle,
 } from "lucide-react";
 
 const Footer = () => {
+  const handleNewsletterSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+  ) => {
+    e.preventDefault();
+    const email = (e.target as HTMLFormElement).email.value;
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_NEWSLETTER_TEMPLATE_ID,
+        {
+          user_email: email,
+          reply_to: email,
+          to_email: "stakweblimited@gmail.com",
+          from_email: email,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      );
+      alert("Successfully subscribed!");
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to subscribe. Please try again later.");
+    }
+  };
+
   return (
     <footer className="bg-[#0A2647] text-gray-100">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Stakweb</h3>
+            <div className="flex items-center gap-2 mb-4">
+              <img
+                src="https://api.dicebear.com/7.x/initials/png?seed=S&backgroundColor=0a2647&textColor=ff6b35&radius=0&b=ffffff&size=128&scale=70"
+                alt="Stakweb Logo"
+                className="w-8 h-8"
+              />
+              <h3 className="text-xl font-bold">Stakweb</h3>
+            </div>
             <p className="text-gray-400 mb-4">
-              Transforming ideas into digital reality with cutting-edge
-              technology solutions.
+              Stay Business Ready - Transforming ideas into digital reality with
+              cutting-edge technology solutions.
             </p>
             <div className="flex space-x-4">
               <a
@@ -34,19 +68,15 @@ const Footer = () => {
                 href="#"
                 className="text-gray-400 hover:text-[#FF6B35] transition-colors"
               >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-[#FF6B35] transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-[#FF6B35] transition-colors"
-              >
                 <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://wa.me/254715881328"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-[#FF6B35] transition-colors"
+              >
+                <MessageCircle className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -56,20 +86,20 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/about"
                   className="text-gray-400 hover:text-[#FF6B35] transition-colors"
                 >
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/services"
                   className="text-gray-400 hover:text-[#FF6B35] transition-colors"
                 >
                   Services
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -125,16 +155,18 @@ const Footer = () => {
             <p className="text-gray-400 mb-4">
               Subscribe to our newsletter for updates and insights.
             </p>
-            <div className="flex space-x-2">
+            <form onSubmit={handleNewsletterSubmit} className="flex space-x-2">
               <input
                 type="email"
+                name="email"
                 placeholder="Your email"
+                required
                 className="flex-1 px-4 py-2 bg-gray-800 text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B35]"
               />
-              <Button className="bg-[#FF6B35] hover:bg-[#FF8B5E] text-white transition-all duration-300">
+              <Button type="submit" className="transition-all duration-300">
                 <Send className="w-5 h-5" />
               </Button>
-            </div>
+            </form>
           </div>
         </div>
 

@@ -13,6 +13,7 @@ import { services } from "@/data/services";
 import ServicesDropdown from "./ServicesDropdown";
 import { Link } from "react-router-dom";
 import { ContactDialog } from "../sections/ContactDialog";
+import { Button } from "@/components/ui/button";
 
 interface NavbarProps {
   logo?: string;
@@ -33,9 +34,14 @@ const Navbar: React.FC<NavbarProps> = ({
     <nav className="fixed top-0 left-0 right-0 h-20 bg-white/90 backdrop-blur-md border-b border-gray-200 z-50">
       <div className="container mx-auto px-4 h-full flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center">
-          <Link to="/" className="text-2xl font-bold text-[#0A2647]">
-            {logo}
+        <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
+            <img
+              src="https://api.dicebear.com/7.x/initials/png?seed=S&backgroundColor=0a2647&textColor=ff6b35"
+              alt="Stakweb Logo"
+              className="w-8 h-8 rounded-lg"
+            />
+            <span className="text-2xl font-bold text-[#0A2647]">{logo}</span>
           </Link>
         </div>
 
@@ -72,14 +78,20 @@ const Navbar: React.FC<NavbarProps> = ({
             <Users className="w-4 h-4" />
             About
           </Link>
-          <Link
-            to="/contact"
-            className="text-gray-600 hover:text-[#FF6B35] transition-colors flex items-center gap-2"
-          >
-            <Phone className="w-4 h-4" />
-            Contact
-          </Link>
-          <ContactDialog />
+          <ContactDialog>
+            <button className="text-gray-600 hover:text-[#FF6B35] transition-colors flex items-center gap-2">
+              <Phone className="w-4 h-4" />
+              Contact
+            </button>
+          </ContactDialog>
+          <ContactDialog>
+            <Button
+              size="lg"
+              className="bg-[#FF6B35] text-white hover:bg-[#FF8B5E] transition-all duration-200"
+            >
+              Get Started
+            </Button>
+          </ContactDialog>
         </div>
 
         {/* Mobile Menu Button */}
@@ -118,9 +130,16 @@ const Navbar: React.FC<NavbarProps> = ({
                 <div className="flex flex-col h-full">
                   {/* Header */}
                   <div className="flex items-center justify-between p-4 border-b">
-                    <span className="text-lg font-semibold text-gray-900">
-                      Menu
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <img
+                        src="https://api.dicebear.com/7.x/initials/png?seed=S&backgroundColor=0a2647&textColor=ff6b35"
+                        alt="Stakweb Logo"
+                        className="w-6 h-6 rounded-lg"
+                      />
+                      <span className="text-lg font-semibold text-gray-900">
+                        Menu
+                      </span>
+                    </div>
                     <button
                       onClick={() => onMenuClick()}
                       className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -192,20 +211,25 @@ const Navbar: React.FC<NavbarProps> = ({
                         <span>About</span>
                       </Link>
 
-                      <Link
-                        to="/contact"
-                        className="flex items-center gap-3 p-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
-                        onClick={() => onMenuClick()}
-                      >
-                        <Phone className="w-5 h-5" />
-                        <span>Contact</span>
-                      </Link>
-                    </nav>
-                  </div>
+                      <ContactDialog>
+                        <button
+                          className="flex items-center w-full gap-3 p-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                          onClick={() => onMenuClick()}
+                        >
+                          <Phone className="w-5 h-5" />
+                          <span>Contact</span>
+                        </button>
+                      </ContactDialog>
 
-                  {/* Footer with CTA */}
-                  <div className="p-4 border-t">
-                    <ContactDialog />
+                      <ContactDialog>
+                        <Button
+                          size="lg"
+                          className="w-full bg-[#FF6B35] text-white hover:bg-[#FF8B5E] transition-all duration-200"
+                        >
+                          Get Started
+                        </Button>
+                      </ContactDialog>
+                    </nav>
                   </div>
                 </div>
               </motion.div>

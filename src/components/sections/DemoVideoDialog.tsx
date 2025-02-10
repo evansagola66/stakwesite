@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -53,7 +53,15 @@ export function DemoVideoDialog() {
           </span>
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[800px] bg-black/95">
+      <DialogContent className="sm:max-w-[800px] bg-black/95 border-gray-800">
+        <div className="absolute right-4 top-4 z-50">
+          <button
+            onClick={() => setOpen(false)}
+            className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors group"
+          >
+            <X className="w-5 h-5 text-white group-hover:text-white" />
+          </button>
+        </div>
         <DialogHeader>
           <DialogTitle className="text-white">
             Stakweb Technology Solutions
@@ -95,13 +103,13 @@ export function DemoVideoDialog() {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white transition-colors"
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
           >
             <ArrowLeft className="w-6 h-6" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
           >
             <ArrowRight className="w-6 h-6" />
           </button>
