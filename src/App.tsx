@@ -9,6 +9,7 @@ import Home from "./components/home";
 const ServicesPage = React.lazy(
   () => import("./components/sections/ServicesPage"),
 );
+const AboutPage = React.lazy(() => import("./components/sections/AboutPage"));
 const ServiceDetail = React.lazy(
   () => import("./components/sections/ServiceDetail"),
 );
@@ -44,6 +45,16 @@ function App() {
             <Layout>
               <Suspense fallback={<Loading />}>
                 <ServiceDetail />
+              </Suspense>
+            </Layout>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <Layout>
+              <Suspense fallback={<Loading />}>
+                <AboutPage />
               </Suspense>
             </Layout>
           }

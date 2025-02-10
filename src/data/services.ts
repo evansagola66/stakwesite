@@ -9,6 +9,8 @@ import {
   Settings,
   Cpu,
   LineChart,
+  Network,
+  Monitor,
 } from "lucide-react";
 
 export interface Service {
@@ -21,6 +23,36 @@ export interface Service {
 }
 
 export const services: Service[] = [
+  {
+    icon: Network,
+    title: "Networking & Structured Cabling",
+    slug: "networking-structured-cabling",
+    description:
+      "Professional network infrastructure and structured cabling solutions",
+    image:
+      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&w=500&q=80",
+    features: [
+      "Network Design & Implementation",
+      "Structured Cabling Installation",
+      "Network Maintenance & Support",
+      "Fiber Optic Solutions",
+    ],
+  },
+  {
+    icon: Monitor,
+    title: "Computer Accessories Sales",
+    slug: "computer-accessories",
+    description:
+      "Quality computer hardware, peripherals and accessories for your needs",
+    image:
+      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?ixlib=rb-4.0.3&w=500&q=80",
+    features: [
+      "Computer Hardware",
+      "Peripherals & Accessories",
+      "Gaming Equipment",
+      "Office Equipment",
+    ],
+  },
   {
     icon: Code2,
     title: "Web Development",

@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Code2, Cpu, Globe2 } from "lucide-react";
 import { ContactDialog } from "./ContactDialog";
+import { DemoVideoDialog } from "./DemoVideoDialog";
 
 const HeroSection = () => {
   return (
@@ -68,12 +69,7 @@ const HeroSection = () => {
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <ContactDialog />
-                <button className="group px-6 py-3 rounded-lg border border-white/20 hover:border-white/40 transition-colors">
-                  <span className="text-white group-hover:text-white/90 flex items-center gap-2">
-                    Watch Demo
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </button>
+                <DemoVideoDialog />
               </motion.div>
 
               {/* Stats */}
