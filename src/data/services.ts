@@ -118,7 +118,7 @@ export const services: Service[] = [
     description:
       "Grow your online presence with data-driven marketing strategies",
     image:
-      "https://images.unsplash.com/photo-1432888622747-4eb9a8f1fafd?ixlib=rb-4.0.3&w=500&q=80&auto=format",
+      "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&w=500&q=80&auto=format",
     features: [
       "SEO Optimization",
       "Content Marketing",
@@ -163,7 +163,7 @@ export const services: Service[] = [
     description:
       "Transform your data into actionable insights for better decision making",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&w=500&q=80&auto=format",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&w=500&q=80&auto=format",
     features: [
       "Data Analytics",
       "Business Intelligence",

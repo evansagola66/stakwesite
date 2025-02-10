@@ -104,16 +104,16 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-[#FF6B35]" />
-                <span className="text-gray-400">+1 (555) 123-4567</span>
+                <span className="text-gray-400">+254 747 880 416</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-[#FF6B35]" />
-                <span className="text-gray-400">contact@stakweb.com</span>
+                <span className="text-gray-400">stakweblimited@gmail.com</span>
               </li>
               <li className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-[#FF6B35]" />
                 <span className="text-gray-400">
-                  123 Tech Street, Silicon Valley, CA
+                  P.O Box 7995, Westlands, Nairobi, Kenya
                 </span>
               </li>
             </ul>

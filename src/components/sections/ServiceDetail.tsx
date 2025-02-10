@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ContactDialog } from "./ContactDialog";
 import { services } from "@/data/services";
+import { Button } from "@/components/ui/button";
 
 const ServiceDetail = () => {
   const { slug } = useParams();
@@ -19,13 +20,16 @@ const ServiceDetail = () => {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-30" />
 
         <div className="container mx-auto px-4">
-          <Link
-            to="/services"
-            className="inline-flex items-center text-gray-400 hover:text-[#FF6B35] mb-8 transition-colors"
+          <Button
+            asChild
+            variant="ghost"
+            className="group mb-8 text-white hover:text-white hover:bg-white/10 backdrop-blur-sm"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Services
-          </Link>
+            <Link to="/services" className="flex items-center gap-2">
+              <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              Back to Services
+            </Link>
+          </Button>
 
           <div className="grid lg:grid-cols-2 gap-12">
             <motion.div

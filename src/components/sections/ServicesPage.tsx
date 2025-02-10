@@ -1,9 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ContactDialog } from "./ContactDialog";
 import { Link } from "react-router-dom";
 import { services } from "@/data/services";
+import { Button } from "@/components/ui/button";
 
 const ServicesPage = () => {
   return (
@@ -12,6 +13,17 @@ const ServicesPage = () => {
       <div className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-30" />
         <div className="container mx-auto px-4">
+          <Button
+            asChild
+            variant="ghost"
+            className="group mb-8 text-white hover:text-white hover:bg-white/10 backdrop-blur-sm"
+          >
+            <Link to="/" className="flex items-center gap-2">
+              <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              Back to Home
+            </Link>
+          </Button>
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -70,7 +82,13 @@ const ServicesPage = () => {
                 </ul>
 
                 <div className="flex justify-between items-center">
-                  <ContactDialog />
+                  <Button
+                    size="lg"
+                    className="bg-[#FF6B35] text-white hover:bg-[#FF8B5E] text-lg px-8 py-6 transition-all duration-300"
+                    asChild
+                  >
+                    <ContactDialog />
+                  </Button>
                   <Link
                     to={`/services/${service.slug}`}
                     className="w-12 h-12 rounded-full bg-[#FF6B35] hover:bg-[#FF8B5E] flex items-center justify-center transition-all duration-300 group"
