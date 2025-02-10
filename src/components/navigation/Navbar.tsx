@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Button } from "../ui/button";
 import ServicesDropdown from "./ServicesDropdown";
+import { Link } from "react-router-dom";
+import { ContactDialog } from "../sections/ContactDialog";
 
 interface NavbarProps {
   logo?: string;
@@ -22,9 +23,9 @@ const Navbar: React.FC<NavbarProps> = ({
       <div className="container mx-auto px-4 h-full flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-          <a href="/" className="text-2xl font-bold text-[#0A2647]">
+          <Link to="/" className="text-2xl font-bold text-[#0A2647]">
             {logo}
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
@@ -34,29 +35,27 @@ const Navbar: React.FC<NavbarProps> = ({
             onMouseEnter={() => setShowServicesDropdown(true)}
             onMouseLeave={() => setShowServicesDropdown(false)}
           >
-            <button className="text-gray-600 hover:text-blue-600 transition-colors">
+            <Link
+              to="/services"
+              className="text-gray-600 hover:text-[#FF6B35] transition-colors"
+            >
               Services
-            </button>
+            </Link>
             <ServicesDropdown isOpen={showServicesDropdown} />
           </div>
-          <a
-            href="/about"
-            className="text-gray-600 hover:text-blue-600 transition-colors"
+          <Link
+            to="/about"
+            className="text-gray-600 hover:text-[#FF6B35] transition-colors"
           >
             About
-          </a>
-          <a
-            href="/contact"
-            className="text-gray-600 hover:text-blue-600 transition-colors"
+          </Link>
+          <Link
+            to="/contact"
+            className="text-gray-600 hover:text-[#FF6B35] transition-colors"
           >
             Contact
-          </a>
-          <Button
-            variant="default"
-            className="bg-[#FF6B35] hover:bg-[#FF8B5E] transition-all duration-300"
-          >
-            Get Started
-          </Button>
+          </Link>
+          <ContactDialog />
         </div>
 
         {/* Mobile Menu Button */}
@@ -80,30 +79,25 @@ const Navbar: React.FC<NavbarProps> = ({
           transition={{ duration: 0.3 }}
         >
           <div className="flex flex-col p-4 space-y-4">
-            <a
-              href="/services"
-              className="text-gray-600 hover:text-blue-600 transition-colors py-2 border-b border-gray-100"
+            <Link
+              to="/services"
+              className="text-gray-600 hover:text-[#FF6B35] transition-colors py-2 border-b border-gray-100"
             >
               Services
-            </a>
-            <a
-              href="/about"
-              className="text-gray-600 hover:text-blue-600 transition-colors py-2 border-b border-gray-100"
+            </Link>
+            <Link
+              to="/about"
+              className="text-gray-600 hover:text-[#FF6B35] transition-colors py-2 border-b border-gray-100"
             >
               About
-            </a>
-            <a
-              href="/contact"
-              className="text-gray-600 hover:text-blue-600 transition-colors py-2 border-b border-gray-100"
+            </Link>
+            <Link
+              to="/contact"
+              className="text-gray-600 hover:text-[#FF6B35] transition-colors py-2 border-b border-gray-100"
             >
               Contact
-            </a>
-            <Button
-              variant="default"
-              className="bg-blue-600 hover:bg-blue-700 w-full"
-            >
-              Get Started
-            </Button>
+            </Link>
+            <ContactDialog />
           </div>
         </motion.div>
       </div>

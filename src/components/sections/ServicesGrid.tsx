@@ -1,86 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import {
-  Code,
-  Palette,
-  Settings,
-  Smartphone,
-  Globe,
-  Database,
-  Shield,
-  Cloud,
-  Cpu,
-  LineChart,
-} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { services } from "@/data/services";
 
-interface Service {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
-
-interface ServicesGridProps {
-  services?: Service[];
-}
-
-const defaultServices: Service[] = [
-  {
-    icon: <Code className="w-8 h-8" />,
-    title: "Web Development",
-    description:
-      "Custom web applications and sites built with modern technologies",
-  },
-  {
-    icon: <Smartphone className="w-8 h-8" />,
-    title: "Mobile Development",
-    description: "Native iOS and Android applications for your business",
-  },
-  {
-    icon: <Palette className="w-8 h-8" />,
-    title: "UI/UX Design",
-    description: "User-centered design solutions that delight your customers",
-  },
-  {
-    icon: <Cloud className="w-8 h-8" />,
-    title: "Cloud Services",
-    description: "Scalable cloud infrastructure and hosting solutions",
-  },
-  {
-    icon: <Database className="w-8 h-8" />,
-    title: "Database Solutions",
-    description: "Efficient data management and optimization strategies",
-  },
-  {
-    icon: <Shield className="w-8 h-8" />,
-    title: "Cybersecurity",
-    description: "Comprehensive security audits and protection measures",
-  },
-  {
-    icon: <Globe className="w-8 h-8" />,
-    title: "Digital Marketing",
-    description: "SEO and online marketing to grow your presence",
-  },
-  {
-    icon: <Settings className="w-8 h-8" />,
-    title: "IT Consulting",
-    description: "Expert technical strategy and advisory services",
-  },
-  {
-    icon: <Cpu className="w-8 h-8" />,
-    title: "AI Solutions",
-    description: "Advanced machine learning integration services",
-  },
-  {
-    icon: <LineChart className="w-8 h-8" />,
-    title: "Analytics",
-    description: "Data analysis and reporting for informed decisions",
-  },
-];
-
-const ServicesGrid: React.FC<ServicesGridProps> = ({
-  services = defaultServices,
-}) => {
+const ServicesGrid = () => {
   return (
     <section className="w-full min-h-screen bg-[#F8F9FA] py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -102,15 +28,41 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full bg-white hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-                <div className="p-6">
-                  <div className="w-12 h-12 bg-[#0A2647]/10 rounded-lg flex items-center justify-center text-[#0A2647] mb-4">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <Card className="h-full bg-white hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/40" />
+                  <service.icon className="absolute top-4 right-4 w-8 h-8 text-[#FF6B35]" />
+                </div>
+                <div className="p-6 space-y-4">
+                  <h3 className="text-xl font-semibold text-gray-900">
                     {service.title}
                   </h3>
                   <p className="text-gray-600">{service.description}</p>
+                  <ul className="space-y-2">
+                    {service.features.slice(0, 2).map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-center text-gray-500"
+                      >
+                        <ArrowRight className="w-4 h-4 text-[#FF6B35] mr-2" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to={`/services/${service.slug}`} className="block mt-4">
+                    <Button
+                      className="w-full bg-[#0A2647] hover:bg-[#0A2647]/90 text-white group-hover:translate-y-0 translate-y-2 opacity-0 group-hover:opacity-100 transition-all duration-300"
+                      size="lg"
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
                 </div>
               </Card>
             </motion.div>
