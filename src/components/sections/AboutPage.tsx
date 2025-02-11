@@ -66,7 +66,7 @@ const AboutPage = () => {
       </div>
 
       {/* Mission Section */}
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-14">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
