@@ -11,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { showSuccessToast, showErrorToast } from "@/components/ui/custom-toast";
+import { Loader2 } from "lucide-react";
 
 export function ContactDialog({ children }: { children?: React.ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -23,24 +25,38 @@ export function ContactDialog({ children }: { children?: React.ReactNode }) {
 
     try {
       if (formRef.current) {
-        await emailjs.sendForm(
+        const result = await emailjs.send(
           import.meta.env.VITE_EMAILJS_SERVICE_ID,
           import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-          formRef.current,
-          import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
           {
+            user_name: formRef.current?.user_name.value,
+            user_email: formRef.current?.user_email.value,
+            user_company: formRef.current?.user_company.value,
+            message: formRef.current?.message.value,
             reply_to: formRef.current?.user_email.value,
             to_email: "stakweblimited@gmail.com",
             from_name: formRef.current?.user_name.value,
             from_email: formRef.current?.user_email.value,
           },
+          import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
         );
-        setOpen(false);
-        alert("Message sent successfully!");
+
+        if (result.status === 200) {
+          showSuccessToast(
+            "Message sent successfully!",
+            "We'll get back to you soon.",
+          );
+          setOpen(false);
+        } else {
+          throw new Error("Failed to send message");
+        }
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to send message. Please try WhatsApp instead.");
+      showErrorToast(
+        "Failed to send message",
+        "Please try WhatsApp instead or try again later.",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -94,7 +110,14 @@ export function ContactDialog({ children }: { children?: React.ReactNode }) {
             className="w-full bg-[#FF6B35] text-white hover:bg-[#FF8B5E] transition-colors duration-200"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Sending..." : "Submit"}
+            {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Sending...
+              </>
+            ) : (
+              "Submit"
+            )}
           </Button>
         </form>
       </DialogContent>

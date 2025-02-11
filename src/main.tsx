@@ -4,6 +4,10 @@ import App from "./App.tsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { TempoDevtools } from "tempo-devtools";
+import emailjs from "@emailjs/browser";
+
+// Initialize EmailJS
+emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
 // Initialize Tempo Devtools
 TempoDevtools.init();
