@@ -45,7 +45,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
                 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-[1.1]">
-              >
+              
                 Stay Business Ready with{" "}
                 <span className="text-[#FF6B35]">Digital</span> Innovation
               </motion.h1>
