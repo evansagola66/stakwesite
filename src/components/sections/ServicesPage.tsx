@@ -15,8 +15,8 @@ const ServicesPage = () => {
         <div className="container mx-auto px-4">
           <Button
             asChild
-            variant="ghost"
-            className="group mb-8 mt-8 backdrop-blur-sm"
+            variant="outline"
+            className="group mb-8 mt-16 backdrop-blur-sm border-[#FF6B35] text-[#FF6B35] hover:bg-[#FF6B35] hover:text-white transition-colors"
           >
             <Link to="/" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
