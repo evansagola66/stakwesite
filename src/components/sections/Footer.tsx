@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
-import { showSuccessToast, showErrorToast } from "@/components/ui/custom-toast";
+import { useToast } from "@/components/ui/use-toast";
 import {
   Loader2,
   Facebook,
@@ -16,6 +16,7 @@ import {
 
 const Footer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const handleNewsletterSubmit = async (
     e: React.FormEvent<HTMLFormElement>,
@@ -57,17 +58,23 @@ const Footer = () => {
       );
 
       if (result.status === 200) {
-        showSuccessToast(
-          "Successfully subscribed!",
-          "Thank you for subscribing to our newsletter.",
-        );
-        (e.target as HTMLFormElement).reset();
+        toast({
+          title: "Newsletter Subscription Successful!",
+          description:
+            "Thank you for subscribing to our newsletter. You'll receive updates soon.",
+          variant: "default",
+        });
+        form.reset();
       } else {
         throw new Error("Failed to subscribe");
       }
     } catch (error) {
       console.error("Error:", error);
-      showErrorToast("Failed to subscribe", "Please try again later.");
+      toast({
+        title: "Failed to subscribe",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }

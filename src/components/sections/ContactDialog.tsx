@@ -11,12 +11,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { showSuccessToast, showErrorToast } from "@/components/ui/custom-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 
 export function ContactDialog({ children }: { children?: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -42,10 +43,13 @@ export function ContactDialog({ children }: { children?: React.ReactNode }) {
         );
 
         if (result.status === 200) {
-          showSuccessToast(
-            "Message sent successfully!",
-            "We'll get back to you soon.",
-          );
+          toast({
+            title: "Message Sent Successfully!",
+            description:
+              "Thank you for contacting us. We'll get back to you soon.",
+            variant: "default",
+          });
+          if (formRef.current) formRef.current.reset();
           setOpen(false);
         } else {
           throw new Error("Failed to send message");
@@ -53,10 +57,11 @@ export function ContactDialog({ children }: { children?: React.ReactNode }) {
       }
     } catch (error) {
       console.error("Error:", error);
-      showErrorToast(
-        "Failed to send message",
-        "Please try WhatsApp instead or try again later.",
-      );
+      toast({
+        title: "Failed to send message",
+        description: "Please try WhatsApp instead or try again later.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }

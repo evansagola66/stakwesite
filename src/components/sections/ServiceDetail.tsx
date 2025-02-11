@@ -5,12 +5,13 @@ import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
 import { services } from "@/data/services";
 import { Button } from "@/components/ui/button";
 import emailjs from "@emailjs/browser";
-import { showSuccessToast, showErrorToast } from "@/components/ui/custom-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 const ServiceDetail = () => {
   const { slug } = useParams();
   const service = services.find((s) => s.slug === slug);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -37,21 +38,23 @@ const ServiceDetail = () => {
         );
 
         if (result.status === 200) {
-          showSuccessToast(
-            "Request sent successfully!",
-            `We'll get back to you about ${service?.title} services soon.`,
-          );
-          formRef.current.reset();
+          toast({
+            title: "Service Request Sent!",
+            description: `Thank you for your interest in ${service?.title}. We'll get back to you soon.`,
+            variant: "default",
+          });
+          if (formRef.current) formRef.current.reset();
         } else {
           throw new Error("Failed to send request");
         }
       }
     } catch (error) {
       console.error("Error:", error);
-      showErrorToast(
-        "Failed to send request",
-        "Please try WhatsApp instead or try again later.",
-      );
+      toast({
+        title: "Failed to send request",
+        description: "Please try WhatsApp instead or try again later.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
