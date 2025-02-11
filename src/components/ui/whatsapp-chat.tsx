@@ -10,7 +10,7 @@ export function WhatsAppChat() {
     <Button
       variant="ghost"
       size="icon"
-      className="fixed bottom-24 right-4 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg w-10 h-10"
+      className="fixed bottom-20 right-4 sm:right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg w-10 h-10"
       onClick={handleWhatsAppClick}
     >
       <MessageSquare className="h-5 w-5" />

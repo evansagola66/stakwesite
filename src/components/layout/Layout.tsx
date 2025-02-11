@@ -13,7 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative overflow-x-hidden w-full">
       <Navbar
         isMenuOpen={isMobileMenuOpen}
         onMenuClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
