@@ -12,7 +12,7 @@ const HeroSection = () => {
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-30" />
 
-      <div className="relative container mx-auto px-4 sm:px-6 pt-20 pb-24 lg:pt-32 lg:pb-40 max-w-[100vw] overflow-hidden">
+      <div className="relative w-full px-4 sm:px-6 pt-20 pb-24 lg:pt-32 lg:pb-40 overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <motion.div

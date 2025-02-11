@@ -26,7 +26,7 @@ export function ScrollToTop() {
   }, []);
 
   return (
-    <div className="fixed bottom-6 right-4 sm:right-6 z-50">
+    <div className="fixed bottom-6 right-3 sm:right-6 z-[60]">
       <Button
         variant="ghost"
         size="icon"
