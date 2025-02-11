@@ -3,6 +3,7 @@ import Navbar from "../navigation/Navbar";
 import Footer from "../sections/Footer";
 import { ScrollToTop } from "../ui/scroll-to-top";
 import { Toaster } from "@/components/ui/toaster";
+import { WhatsAppChat } from "../ui/whatsapp-chat";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -21,6 +22,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Footer />
       <ScrollToTop />
       <Toaster />
+      <WhatsAppChat />
     </div>
   );
 };
