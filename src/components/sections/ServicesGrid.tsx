@@ -8,7 +8,7 @@ import { services } from "@/data/services";
 
 const ServicesGrid = () => {
   return (
-    <section className="w-full min-h-screen bg-[#F8F9FA] py-20 px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-[#F8F9FA] py-12 sm:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">

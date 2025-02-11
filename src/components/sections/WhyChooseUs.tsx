@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image Column */}

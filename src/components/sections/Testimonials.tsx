@@ -99,7 +99,7 @@ const Testimonials = () => {
   );
 
   return (
-    <section className="py-20 bg-[#0A2647]">
+    <section className="py-12 sm:py-20 bg-[#0A2647] overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">
